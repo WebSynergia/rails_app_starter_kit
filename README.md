@@ -1,9 +1,9 @@
-rails_app_starter_kit
+Rails App Starter Kit
 =====================
 
 ![websynergia](http://websynergia.com.pl/images/logo_websynergia.jpg)
 
-Rails application template we use in WebSynergia. Convention over configuration to the max.
+Rails application template we use in WebSynergia. Convention over configuration to the maximum.
 
 Huh? Another Rails app template?
 -------
