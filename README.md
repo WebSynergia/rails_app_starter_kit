@@ -42,7 +42,7 @@ That's awesome. How do I use it?
 Just create new app the usual way with additional argument:
 
 ```
-rails new app_name -m https://github.com/WebSynergia/rails_app_starter_kit/template.rb
+rails new app_name -m https://raw.githubusercontent.com/WebSynergia/rails_app_starter_kit/master/template.rb
 ```
 
 Now you can instantly start developing new app without any additional setup. Enjoy!
