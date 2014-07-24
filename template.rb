@@ -205,7 +205,7 @@ guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch('spec/support/')
 end
 
-guard 'rspec', :all_after_pass => false do
+guard :rspec, cmd: 'bundle exec rspec', all_after_pass: false do
   watch(%r{^spec/.+_spec\\.rb$})
   watch(%r{^lib/(.+)\\.rb$})     { |m| "spec/lib/\#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
@@ -352,7 +352,7 @@ Spork.prefork do
     end
 
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-    config.fixture_path = "\#{::Rails.root}/spec/fixtures"
+    config.fixture_path = "\#{Rails.root}/spec/fixtures"
 
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
@@ -1256,7 +1256,7 @@ namespace :deploy do
     end
     on roles(:app) do |role|
       run_locally do
-        execute "rsync -av -e \"ssh -p \#{fetch(:ssh_options)[:port]}\" ./public/assets/ #{role.user}@#{role.hostname}:#{release_path}/public/assets/;"
+        execute "rsync -av -e \"ssh -p \#{fetch(:ssh_options)[:port]}\" ./public/assets/ \#{role.user}@\#{role.hostname}:\#{release_path}/public/assets/;"
       end
     end
     run_locally do
