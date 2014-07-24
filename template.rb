@@ -43,9 +43,7 @@ gem_group :development, :test do
   gem "better_errors"
   gem 'annotate'
   gem 'bullet'
-  gem 'debugger'
   gem 'hirb'
-  gem 'localtunnel'
   gem 'lol_dba'
   gem 'mailcatcher'
   gem 'meta_request'
