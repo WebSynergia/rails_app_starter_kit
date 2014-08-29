@@ -978,7 +978,7 @@ set :repo_url, "#{remote_repo}"
 
 # setup rvm.
 set :rvm_type, :system
-set :rvm_ruby_version, \""#{ruby_version_on_server}"\"
+set :rvm_ruby_version, "#{ruby_version_on_server}"
 
 # how many old releases do we want to keep, not much
 set :keep_releases, 5
