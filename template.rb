@@ -978,7 +978,7 @@ set :repo_url, "#{remote_repo}"
 
 # setup rvm.
 set :rvm_type, :system
-set :rvm_ruby_version, #{ruby_version_on_server}
+set :rvm_ruby_version, \""#{ruby_version_on_server}"\"
 
 # how many old releases do we want to keep, not much
 set :keep_releases, 5
@@ -1256,7 +1256,7 @@ namespace :deploy do
     end
     on roles(:app) do |role|
       run_locally do
-        execute "rsync -av -e \"ssh -p \#{fetch(:ssh_options)[:port]}\" ./public/assets/ \#{role.user}@\#{role.hostname}:\#{release_path}/public/assets/;"
+        execute "rsync -av -e \\\"ssh -p \#{fetch(:ssh_options)[:port]}\\\" ./public/assets/ \#{role.user}@\#{role.hostname}:\#{release_path}/public/assets/;"
       end
     end
     run_locally do
