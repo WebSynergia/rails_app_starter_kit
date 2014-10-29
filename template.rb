@@ -30,7 +30,7 @@ gem 'virtus'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem "daemons"
-gem "figaro", git: "https://github.com/laserlemon/figaro", ref: "7261234e1415f429bd2c972b568e89d639127b46"
+gem "figaro"
 gem 'airbrake'
 gem 'schema_plus'
 gem 'reform'
@@ -610,6 +610,10 @@ end
 ruby_version = ask("Specify Ruby Verion")
 create_file ".ruby-version", <<-RUBY
 ruby-#{ruby_version}
+RUBY
+
+create_file ".ruby-gemset", <<-RUBY
+#{app_name}
 RUBY
 
 gitignore_file = ".gitignore"
@@ -1410,5 +1414,11 @@ git :init
 git add: "."
 git commit: "-a -m 'Setup basic app skeleton by WebSynergia Rails App Starter Kit (RASK)'"
 git remote: "add origin #{remote_repo}"
+
+inject_into_file 'config/secrets.yml', after: "<%= ENV[\"SECRET_KEY_BASE\"] %>\n" do <<-'RUBY'
+staging:
+  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
+RUBY
+end
 
 run "echo 'Thank you for using WebSynergia Rails App Starter Kit (RASK)'"
